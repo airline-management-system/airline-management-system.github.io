@@ -1,32 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>	
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airline Management System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            color: #333;
-        }
-        a {
-            display: block;
-            margin: 10px 0;
-            font-size: 18px;
-            color: #0073e6;
-            text-decoration: none;
-        }
-        a:hover {
-            color: #005bb5;
-        }
-    </style>
+    <title>AMS - Airline Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <h1>Airline Management System</h1>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">Overview</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="https://github.com/airline-management-system" target="_blank" class="btn">GitHub</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Airline Management System</h1>
+            <p>Revolutionizing airline operations with AI, security, and scalability.</p>
+        </div>
+    </header>
+    
+    <section id="about" class="content-section">
+        <div class="text-content">
+            <h2>Project Overview</h2>
+            <p>AMS is a user-friendly airline management system designed to replace outdated systems and enhance the customer and employee experience.</p>
+        </div>
+        <div class="image-content">
+            <img src="ams.png" alt="Project Overview">
+        </div>
+    </section>
+
+    <section id="features" class="content-section">
+        <div class="image-content">
+            <img src="ams-flight.png" style="width: 700 px; height: 100%;" alt="Key Features">
+        </div>
+        <div class="text-content">
+            <h2>Key Features</h2>
+            <ul>
+                <li>AI-Powered Chatbot & Fraud Detection</li>
+                <li>Kubernetes Deployment</li>
+                <li>Enhanced Security Measures</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="team" class="team-section">
+        <h2>Meet the Team</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="berkay.jpg" alt="Berkay Dinç">
+                <p><strong>Berkay Dinç</strong></p>
+                <a href="https://www.linkedin.com/in/berkay-din%C3%A7-2918b0222/" target="_blank">LinkedIn</a>
+            </div>
+            <div class="team-member">
+                <img src="yusuf.jpg" alt="Yusuf Gassaloğlu">
+                <p><strong>Yusuf Gassaloğlu</strong></p>
+                <a href="https://www.linkedin.com/in/gassaloglu/" target="_blank">LinkedIn</a>
+            </div>
+            <div class="team-member">
+                <img src="guney.jpg" alt="Güney Söğüt">
+                <p><strong>Güney Söğüt</strong></p>
+                <a href="https://www.linkedin.com/in/guney-sogut-23a081223/" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 AMS Project. All rights reserved.</p>
+    </footer>
 </body>
 </html>
+
