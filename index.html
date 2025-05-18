@@ -1,184 +1,283 @@
-<!DOCTYPE HTML>
-<!--
-	Stellar by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Stellar by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Management System Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="static/styles/style.css">
+    <style>
+        /* Minimal critical styles or Tailwind config can go here if needed, but prefer external CSS */
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-700">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <header x-data="{ mobileMenuOpen: false }" class="bg-white/95 backdrop-blur-lg shadow-sm fixed w-full z-50">
+        <div class="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+            <div class="flex items-center justify-between">
+                <a href="#home" class="text-xl sm:text-2xl font-bold text-indigo-700 hover:text-indigo-800 transition">Airline Management System</a>
+                <nav class="hidden md:flex space-x-5 lg:space-x-7">
+                    <a href="#home" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">About</a>
+                    <a href="#features" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Features</a>
+                    <a href="#tech-stack" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Tech Stack</a>
+                    <a href="#gallery" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Gallery</a>
+                    <a href="#team" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Team</a>
+                    <a href="#documents" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Documents</a>
+                </nav>
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-700 focus:outline-none p-2 -mr-2" aria-label="Open menu">
+                        <i x-show="!mobileMenuOpen" data-lucide="menu" class="w-6 h-6 stroke-current"></i>
+                        <i x-show="mobileMenuOpen" data-lucide="x" class="w-6 h-6 stroke-current" style="display: none;"></i>
+                    </button>
+                </div>
+            </div>
+            <div x-cloak x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" x-transition class="md:hidden mt-3 border-t border-gray-200 pt-2">
+                <a href="#home" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Home</a>
+                <a href="#about" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">About</a>
+                <a href="#features" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Features</a>
+                <a href="#tech-stack" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Tech Stack</a>
+                <a href="#gallery" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Gallery</a>
+                <a href="#team" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Team</a>
+                <a href="#documents" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Documents</a>
+            </div>
+        </div>
+    </header>
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						<span class="logo"><img src="images/logo.svg" alt="" /></span>
-						<h1>Stellar</h1>
-						<p>Just another free, fully responsive site template<br />
-						built by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</header>
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-20 sm:pt-16">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+            <div class="bg-black/50 backdrop-blur-md py-12 sm:py-16 md:py-20 px-4 sm:px-8 rounded-xl max-w-4xl mx-auto">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-4 sm:mb-6">
+                    Modernized Airline Management System
+                </h1>
+                <p class="text-xl sm:text-2xl lg:text-3xl text-indigo-100 mb-8 sm:mb-10">
+                    Enhanced With AI-Driven Solutions
+                </p>
+                <div class="flex flex-col items-center space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+                    <a href="#about" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors shadow-md hover:shadow-lg">
+                        Learn More
+                    </a>
+                    <a href="#documents" class="w-full sm:w-auto bg-transparent hover:bg-indigo-500 text-indigo-100 hover:text-white font-semibold py-3 px-8 rounded-lg border-2 border-indigo-300 hover:border-indigo-500 text-lg transition-colors shadow-md hover:shadow-lg">
+                        View Documents
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li><a href="#intro" class="active">Introduction</a></li>
-							<li><a href="#first">First Section</a></li>
-							<li><a href="#second">Second Section</a></li>
-							<li><a href="#cta">Get Started</a></li>
-						</ul>
-					</nav>
+    <section id="about" class="py-24 md:py-32 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 mb-8 sm:mb-12 text-center">Rethinking Airline Management</h2>
+            <p class="text-lg sm:text-xl text-gray-500 mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto">
+                Traditional airline management systems are often outdated. This project introduces a modernized system leveraging innovative technologies for both airline personnel and customers.
+            </p>
+            <div class="max-w-3xl mx-auto text-base sm:text-lg text-gray-700 space-y-6 sm:space-y-7 leading-relaxed">
+                <p>
+                    The core goal is to bridge the gap between legacy operational systems and modern user expectations. By creating a cutting-edge, fully online platform, we empower both customers and airline employees with intuitive interfaces and intelligent features.
+                </p>
+                <p>
+                    Our solution facilitates quicker data access, streamlines workflows for staff, and offers passengers a seamless communication experience, ultimately aiming to improve efficiency, reduce operational costs, and boost overall satisfaction.
+                </p>
+            </div>
+        </div>
+    </section>
 
-				<!-- Main -->
-					<div id="main">
+    <section id="features" class="py-24 md:py-32 bg-slate-100">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 mb-8 sm:mb-12 text-center">Intelligent & Efficient by Design</h2>
+            <p class="text-lg sm:text-xl text-gray-500 mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto">
+                Explore the key features that make our Airline Management System a next-generation solution.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
+                    <div class="flex-shrink-0 flex items-center justify-center w-20 h-20 bg-indigo-100 text-indigo-600 rounded-full mb-6 shadow-md">
+                        <i data-lucide="message-circle" class="w-10 h-10"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">AI Chatbot</h3>
+                        <p class="text-gray-600">Delivers instant support for customers and employees, reducing wait times and easing staff workload.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
+                    <div class="flex-shrink-0 flex items-center justify-center w-20 h-20 bg-indigo-100 text-indigo-600 rounded-full mb-6 shadow-md">
+                        <i data-lucide="shield-check" class="w-10 h-10"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Anti-Fraud System</h3>
+                        <p class="text-gray-600">Uses machine learning to monitor and identify potentially fraudulent transactions instantly.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
+                    <div class="flex-shrink-0 flex items-center justify-center w-20 h-20 bg-indigo-100 text-indigo-600 rounded-full mb-6 shadow-md">
+                        <i data-lucide="users" class="w-10 h-10"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">AI-Powered CRM</h3>
+                        <p class="text-gray-600">Analyzes data to predict customer satisfaction levels, helping improve service quality.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
+                    <div class="flex-shrink-0 flex items-center justify-center w-20 h-20 bg-indigo-100 text-indigo-600 rounded-full mb-6 shadow-md">
+                        <i data-lucide="radar" class="w-10 h-10"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Intrusion Detection</h3>
+                        <p class="text-gray-600">Continuously monitors for security threats and unauthorized access to protect system integrity.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
+                    <div class="flex-shrink-0 flex items-center justify-center w-20 h-20 bg-indigo-100 text-indigo-600 rounded-full mb-6 shadow-md">
+                        <i data-lucide="server-cog" class="w-10 h-10"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Scalable DevOps</h3>
+                        <p class="text-gray-600">A DevOps-driven, Kubernetes-based system focused on ensuring scalable and reliable operations.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
+                    <div class="flex-shrink-0 flex items-center justify-center w-20 h-20 bg-indigo-100 text-indigo-600 rounded-full mb-6 shadow-md">
+                        <i data-lucide="lock-keyhole" class="w-10 h-10"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Robust Security</h3>
+                        <p class="text-gray-600">Comprehensive measures including encryption and access control to protect data integrity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-						<!-- Introduction -->
-							<section id="intro" class="main">
-								<div class="spotlight">
-									<div class="content">
-										<header class="major">
-											<h2>Ipsum sed adipiscing</h2>
-										</header>
-										<p>Sed lorem ipsum dolor sit amet nullam consequat feugiat consequat magna
-										adipiscing magna etiam amet veroeros. Lorem ipsum dolor tempus sit cursus.
-										Tempus nisl et nullam lorem ipsum dolor sit amet aliquam.</p>
-										<ul class="actions">
-											<li><a href="generic.html" class="button">Learn More</a></li>
-										</ul>
-									</div>
-									<span class="image"><img src="images/pic01.jpg" alt="" /></span>
-								</div>
-							</section>
+    <section id="tech-stack" class="py-24 md:py-32 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 mb-8 sm:mb-12 text-center">Built with Modern Technologies</h2>
+            <p class="text-lg sm:text-xl text-gray-500 !mb-20 sm:!mb-24 md:!mb-28 text-center max-w-3xl mx-auto">
+                Our system leverages a robust and scalable technology stack.
+            </p>
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6 gap-x-6 gap-y-10 sm:gap-x-10 sm:gap-y-12 items-center justify-items-center">
+                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Go">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/go.svg" alt="Go Logo">
+                </div>
+                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Python">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg" alt="Python Logo">
+                </div>
+                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="TypeScript">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/typescript.svg" alt="TypeScript Logo">
+                </div>
+                 <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="AI / Analytics Engine (Google Cloud)">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlecloud.svg" alt="Google Cloud for AI/Analytics">
+                </div>
+                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Jenkins">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/jenkins.svg" alt="Jenkins Logo">
+                </div>
+                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Docker">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/docker.svg" alt="Docker Logo">
+                </div>
+                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="API Gateway (NGINX)">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nginx.svg" alt="NGINX Logo">
+                </div>
+                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Data Pipeline (Apache Kafka)">
+                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/apachekafka.svg" alt="Apache Kafka Logo">
+                </div>
+                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="PostgreSQL">
+                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/postgresql.svg" alt="PostgreSQL Logo">
+                </div>
+                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Scikit-learn">
+                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/scikitlearn.svg" alt="Scikit-learn Logo">
+                </div>
+                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Harbor">
+                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/harbor.svg" alt="Harbor Logo">
+                </div>
+                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Kubernetes">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kubernetes.svg" alt="Kubernetes Logo">
+                </div>
+            </div>
+        </div>
+    </section>
 
-						<!-- First Section -->
-							<section id="first" class="main special">
-								<header class="major">
-									<h2>Magna veroeros</h2>
-								</header>
-								<ul class="features">
-									<li>
-										<span class="icon solid major style1 fa-code"></span>
-										<h3>Ipsum consequat</h3>
-										<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
-									</li>
-									<li>
-										<span class="icon major style3 fa-copy"></span>
-										<h3>Amed sed feugiat</h3>
-										<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
-									</li>
-									<li>
-										<span class="icon major style5 fa-gem"></span>
-										<h3>Dolor nullam</h3>
-										<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
-									</li>
-								</ul>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
+    <section id="gallery" class="py-24 md:py-32 bg-slate-100">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 mb-8 sm:mb-12 text-center">Project Visuals</h2>
+            <p class="text-lg sm:text-xl text-gray-500 mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto">
+                A glimpse into the Airline Management System. (Screenshots and videos coming soon!)
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden aspect-[4/3]">
+                    <img src="https://placehold.co/800x600/e0e0e0/999999?text=Dashboard+View" alt="Project Screenshot 1" class="w-full h-full object-cover">
+                </div>
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden aspect-[4/3]">
+                    <img src="https://placehold.co/800x600/d0d0d0/888888?text=System+Demo+Video" alt="Project Video Preview" class="w-full h-full object-cover">
+                </div>
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden aspect-[4/3]">
+                    <img src="https://placehold.co/800x600/c0c0c0/777777?text=AI+Chatbot+UI" alt="Project Feature Showcase" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <p class="text-center mt-12 sm:mt-16 text-gray-600">More visuals will be added here.</p>
+        </div>
+    </section>
 
-						<!-- Second Section -->
-							<section id="second" class="main special">
-								<header class="major">
-									<h2>Ipsum consequat</h2>
-									<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
-								</header>
-								<ul class="statistics">
-									<li class="style1">
-										<span class="icon solid fa-code-branch"></span>
-										<strong>5,120</strong> Etiam
-									</li>
-									<li class="style2">
-										<span class="icon fa-folder-open"></span>
-										<strong>8,192</strong> Magna
-									</li>
-									<li class="style3">
-										<span class="icon solid fa-signal"></span>
-										<strong>2,048</strong> Tempus
-									</li>
-									<li class="style4">
-										<span class="icon solid fa-laptop"></span>
-										<strong>4,096</strong> Aliquam
-									</li>
-									<li class="style5">
-										<span class="icon fa-gem"></span>
-										<strong>1,024</strong> Nullam
-									</li>
-								</ul>
-								<p class="content">Nam elementum nisl et mi a commodo porttitor. Morbi sit amet nisl eu arcu faucibus hendrerit vel a risus. Nam a orci mi, elementum ac arcu sit amet, fermentum pellentesque et purus. Integer maximus varius lorem, sed convallis diam accumsan sed. Etiam porttitor placerat sapien, sed eleifend a enim pulvinar faucibus semper quis ut arcu. Ut non nisl a mollis est efficitur vestibulum. Integer eget purus nec nulla mattis et accumsan ut magna libero. Morbi auctor iaculis porttitor. Sed ut magna ac risus et hendrerit scelerisque. Praesent eleifend lacus in lectus aliquam porta. Cras eu ornare dui curabitur lacinia.</p>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
+    <section id="team" class="py-24 md:py-32 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 mb-8 sm:mb-12 text-center">Meet the Team</h2>
+            <p class="text-lg sm:text-xl text-gray-500 mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto">
+                The talented individuals behind this project.
+            </p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 max-w-5xl mx-auto">
+                <div class="text-center p-8 bg-slate-50 rounded-xl shadow-xl">
+                    <img src="https://placehold.co/128x128/e0e7ff/4338ca?text=BD" alt="Berkay Dinç" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-md">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Berkay Dinç</h3>
+                    <p class="text-indigo-600 font-medium">Project Developer</p>
+                </div>
+                <div class="text-center p-8 bg-slate-50 rounded-xl shadow-xl">
+                    <img src="https://placehold.co/128x128/e0e7ff/4338ca?text=YG" alt="Yusuf Gassaloğlu" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-md">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Yusuf Gassaloğlu</h3>
+                    <p class="text-indigo-600 font-medium">Project Developer</p>
+                </div>
+                <div class="text-center p-8 bg-slate-50 rounded-xl shadow-xl">
+                    <img src="https://placehold.co/128x128/e0e7ff/4338ca?text=GS" alt="Güney Söğüt" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-md">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Güney Söğüt</h3>
+                    <p class="text-indigo-600 font-medium">Project Developer</p>
+                </div>
+            </div>
+            <div class="text-center mt-16 sm:mt-20 p-8 bg-slate-50 rounded-xl shadow-xl max-w-sm mx-auto">
+                <img src="https://placehold.co/128x128/d1fae5/059669?text=SU" alt="Prof. Dr. Semih Utku" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-emerald-200 shadow-md">
+                <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Prof. Dr. Semih Utku</h3>
+                <p class="text-emerald-600 font-medium">Project Mentor</p>
+            </div>
+        </div>
+    </section>
 
-						<!-- Get Started -->
-							<section id="cta" class="main special">
-								<header class="major">
-									<h2>Congue imperdiet</h2>
-									<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
-								</header>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button primary">Get Started</a></li>
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
+    <section id="documents" class="py-24 md:py-32 bg-slate-100">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 mb-8 sm:mb-12 text-center">Project Documents</h2>
+            <p class="text-lg sm:text-xl text-gray-500 mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto">
+                Access the detailed project report and poster.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 sm:gap-8">
+                <a href="#" onclick="alert('Please replace # with the actual link to your report PDF.')" class="w-full md:w-auto flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3.5 px-8 sm:py-4 sm:px-10 rounded-lg text-lg transition-colors shadow-lg hover:shadow-xl">
+                    <i data-lucide="file-text" class="mr-3 w-5 h-5 sm:w-6 sm:h-6"></i>
+                    View Full Report
+                </a>
+                <a href="#" onclick="alert('Please replace # with the actual link to your poster PDF.')" class="w-full md:w-auto flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 px-8 sm:py-4 sm:px-10 rounded-lg text-lg transition-colors shadow-lg hover:shadow-xl">
+                    <i data-lucide="image" class="mr-3 w-5 h-5 sm:w-6 sm:h-6"></i>
+                    View Project Poster
+                </a>
+            </div>
+             <p class="text-center mt-14 sm:mt-16 text-gray-600 text-sm">Note: You will need to host these PDF files and update the links in the code.</p>
+        </div>
+    </section>
 
-					</div>
+    <footer class="bg-gray-900 text-gray-400 py-12 sm:py-16">
+        <div class="container mx-auto px-4 sm:px-6 text-center text-sm">
+            <p>&copy; 2025 Modernized Airline Management System Project.</p>
+            <p>Dokuz Eylul University, Department of Computer Engineering.</p>
+            <p class="mt-3 text-xs text-gray-500">Designed to be modern, minimalist, and responsive.</p>
+        </div>
+    </footer>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<h2>Aliquam sed mauris</h2>
-							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
-							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn More</a></li>
-							</ul>
-						</section>
-						<section>
-							<h2>Etiam feugiat</h2>
-							<dl class="alt">
-								<dt>Address</dt>
-								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
-								<dt>Phone</dt>
-								<dd>(000) 000-0000 x 0000</dd>
-								<dt>Email</dt>
-								<dd><a href="#">information@untitled.tld</a></dd>
-							</dl>
-							<ul class="icons">
-								<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-								<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
-								<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
-							</ul>
-						</section>
-						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="static/scripts/script.js" defer></script>
+</body>
 </html>
