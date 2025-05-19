@@ -6,20 +6,19 @@
     <title>Airline Management System Project</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <link rel="stylesheet" href="static/styles/style.css">
     <style>
-        /* Minimal critical styles or Tailwind config can go here if needed, but prefer external CSS */
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="bg-slate-50 text-gray-700">
+<body class="bg-slate-50 text-gray-700" x-data="{ showImageModal: false, modalImgSrc: '' }">
 
     <header x-data="{ mobileMenuOpen: false }" class="bg-white/95 backdrop-blur-lg shadow-sm fixed w-full z-50">
         <div class="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
             <div class="flex items-center justify-between">
-                <a href="#home" class="text-xl sm:text-2xl font-bold text-indigo-700 hover:text-indigo-800 transition">Airline Management System</a>
-                <nav class="hidden md:flex space-x-5 lg:space-x-7">
+                <a href="#home" class="text-lg sm:text-xl font-bold text-indigo-700 hover:text-indigo-800 transition">Airline Management System</a>
+                <nav class="hidden md:flex items-center space-x-5 lg:space-x-7">
                     <a href="#home" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Home</a>
                     <a href="#about" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">About</a>
                     <a href="#features" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Features</a>
@@ -27,6 +26,9 @@
                     <a href="#gallery" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Gallery</a>
                     <a href="#team" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Team</a>
                     <a href="#documents" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Documents</a>
+                    <a href="https://github.com/airline-management-system" target="_blank" rel="noopener noreferrer" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium flex items-center">
+                        <i data-lucide="github" class="w-4 h-4 mr-1.5"></i>GitHub
+                    </a>
                 </nav>
                 <div class="md:hidden">
                     <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-700 focus:outline-none p-2 -mr-2" aria-label="Open menu">
@@ -43,6 +45,7 @@
                 <a href="#gallery" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Gallery</a>
                 <a href="#team" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Team</a>
                 <a href="#documents" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Documents</a>
+                <a href="https://github.com/airline-management-system" target="_blank" rel="noopener noreferrer" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">GitHub</a>
             </div>
         </div>
     </header>
@@ -74,7 +77,7 @@
             <p class="text-lg sm:text-xl text-gray-500 mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto">
                 Traditional airline management systems are often outdated. This project introduces a modernized system leveraging innovative technologies for both airline personnel and customers.
             </p>
-            <div class="max-w-3xl mx-auto text-base sm:text-lg text-gray-700 space-y-6 sm:space-y-7 leading-relaxed">
+            <div class="max-w-3xl mx-auto text-center sm:text-lg text-gray-700 space-y-6 sm:space-y-7 leading-relaxed">
                 <p>
                     The core goal is to bridge the gap between legacy operational systems and modern user expectations. By creating a cutting-edge, fully online platform, we empower both customers and airline employees with intuitive interfaces and intelligent features.
                 </p>
@@ -166,8 +169,8 @@
                 <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="TypeScript">
                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/typescript.svg" alt="TypeScript Logo">
                 </div>
-                 <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="AI / Analytics Engine (Google Cloud)">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlecloud.svg" alt="Google Cloud for AI/Analytics">
+                 <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Tailscale">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tailscale.svg" alt="Tailscale Logo">
                 </div>
                 <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Jenkins">
                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/jenkins.svg" alt="Jenkins Logo">
@@ -175,11 +178,11 @@
                 <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Docker">
                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/docker.svg" alt="Docker Logo">
                 </div>
-                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="API Gateway (NGINX)">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nginx.svg" alt="NGINX Logo">
+                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Langchain">
+                    <img src="https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/logos/langchain-ipuhh4qo1jz5ssl4x0g2a.png/langchain-dp1uxj2zn3752pntqnpfu2.png" alt="Langchain Logo">
                 </div>
-                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Data Pipeline (Apache Kafka)">
-                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/apachekafka.svg" alt="Apache Kafka Logo">
+                <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="Pandas">
+                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/pandas.svg" alt="Pandas Logo">
                 </div>
                 <div class="tech-logo-item flex justify-center items-center h-14 w-14 sm:h-16 sm:w-16" title="PostgreSQL">
                      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/postgresql.svg" alt="PostgreSQL Logo">
@@ -201,20 +204,25 @@
         <div class="container mx-auto px-4 sm:px-6">
             <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 mb-8 sm:mb-12 text-center">Project Visuals</h2>
             <p class="text-lg sm:text-xl text-gray-500 mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto">
-                A glimpse into the Airline Management System. (Screenshots and videos coming soon!)
+                A glimpse into the Airline Management System.
             </p>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-                <div class="bg-white rounded-xl shadow-xl overflow-hidden aspect-[4/3]">
-                    <img src="https://placehold.co/800x600/e0e0e0/999999?text=Dashboard+View" alt="Project Screenshot 1" class="w-full h-full object-cover">
-                </div>
-                <div class="bg-white rounded-xl shadow-xl overflow-hidden aspect-[4/3]">
-                    <img src="https://placehold.co/800x600/d0d0d0/888888?text=System+Demo+Video" alt="Project Video Preview" class="w-full h-full object-cover">
-                </div>
-                <div class="bg-white rounded-xl shadow-xl overflow-hidden aspect-[4/3]">
-                    <img src="https://placehold.co/800x600/c0c0c0/777777?text=AI+Chatbot+UI" alt="Project Feature Showcase" class="w-full h-full object-cover">
-                </div>
+                <a href="#" @click.prevent="modalImgSrc = 'static/images/home-hero.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300" aria-label="View Dashboard Visual">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="static/images/home-hero.png" alt="Project Screenshot 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                </a>
+                <a href="#" @click.prevent="modalImgSrc = 'https://placehold.co/1200x900/d0d0d0/888888?text=System+Demo+Enlarged'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300" aria-label="View System Demo Video">
+                     <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://placehold.co/800x600/d0d0d0/888888?text=System+Demo+Video" alt="Project Video Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                </a>
+                <a href="#" @click.prevent="modalImgSrc = 'https://placehold.co/1200x900/c0c0c0/777777?text=AI+Chatbot+Enlarged'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300" aria-label="View AI Chatbot UI">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://placehold.co/800x600/c0c0c0/777777?text=AI+Chatbot+UI" alt="Project Feature Showcase" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                </a>
             </div>
-            <p class="text-center mt-12 sm:mt-16 text-gray-600">More visuals will be added here.</p>
         </div>
     </section>
 
@@ -226,25 +234,66 @@
             </p>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 max-w-5xl mx-auto">
                 <div class="text-center p-8 bg-slate-50 rounded-xl shadow-xl">
-                    <img src="https://placehold.co/128x128/e0e7ff/4338ca?text=BD" alt="Berkay Dinç" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-md">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQFZj6LzSsY56Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1710423535799?e=1753315200&v=beta&t=i-eGb00dsfMiyhOZuS8o0TDUju6AoVejiy9mGDZddoQ" alt="Berkay Dinç" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-md">
                     <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Berkay Dinç</h3>
                     <p class="text-indigo-600 font-medium">Project Developer</p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <a href="https://www.linkedin.com/in/berkay-din%C3%A7-2918b0222/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-indigo-600 transition-colors" aria-label="Berkay Dinç LinkedIn">
+                            <i data-lucide="linkedin" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://github.com/brkydnc" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-indigo-600 transition-colors" aria-label="Berkay Dinç GitHub">
+                            <i data-lucide="github" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://brkydnc.github.io/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-emerald-600 transition-colors" aria-label="Berkay Dinç Website">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </a>
+                    </div>
                 </div>
                 <div class="text-center p-8 bg-slate-50 rounded-xl shadow-xl">
-                    <img src="https://placehold.co/128x128/e0e7ff/4338ca?text=YG" alt="Yusuf Gassaloğlu" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-md">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQHS3r1z9bP16g/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1712694495207?e=1753315200&v=beta&t=blb1rxQ3-sruHSWQnHDAWUCPECic1OjbQI85gmXUebM" alt="Yusuf Gassaloğlu" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-md">
                     <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Yusuf Gassaloğlu</h3>
                     <p class="text-indigo-600 font-medium">Project Developer</p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <a href="https://www.linkedin.com/in/gassaloglu" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-indigo-600 transition-colors" aria-label="Yusuf Gassaloğlu LinkedIn">
+                            <i data-lucide="linkedin" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://github.com/gassaloglu" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-indigo-600 transition-colors" aria-label="Yusuf Gassaloğlu GitHub">
+                            <i data-lucide="github" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://gassaloglu.github.io/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-emerald-600 transition-colors" aria-label="Yusuf Gassaloğlu Website">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </a>
+                    </div>
                 </div>
                 <div class="text-center p-8 bg-slate-50 rounded-xl shadow-xl">
-                    <img src="https://placehold.co/128x128/e0e7ff/4338ca?text=GS" alt="Güney Söğüt" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-md">
+                    <img src="https://media.licdn.com/dms/image/v2/C4D03AQHlmEjTpyPXxA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1661286053598?e=1753315200&v=beta&t=ydbJ6yJYJNp32O-E-Jz9lWj1vNfcLPfXlZLYkWIX-qc" alt="Güney Söğüt" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-md">
                     <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Güney Söğüt</h3>
                     <p class="text-indigo-600 font-medium">Project Developer</p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <a href="https://www.linkedin.com/in/guney-sogut-23a081223/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-indigo-600 transition-colors" aria-label="Güney Söğüt LinkedIn">
+                            <i data-lucide="linkedin" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://github.com/guneysogutt" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-indigo-600 transition-colors" aria-label="Güney Söğüt GitHub">
+                            <i data-lucide="github" class="w-6 h-6"></i>
+                        </a>
+                        <a href="https://guneysogutt.github.io/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-emerald-600 transition-colors" aria-label="Güney Söğüt Website">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </a>
+                    </div>
                 </div>
             </div>
             <div class="text-center mt-16 sm:mt-20 p-8 bg-slate-50 rounded-xl shadow-xl max-w-sm mx-auto">
-                <img src="https://placehold.co/128x128/d1fae5/059669?text=SU" alt="Prof. Dr. Semih Utku" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-emerald-200 shadow-md">
+                <img src="https://avesis.deu.edu.tr/user/image/102941" alt="Prof. Dr. Semih Utku" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-emerald-200 shadow-md">
                 <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Prof. Dr. Semih Utku</h3>
                 <p class="text-emerald-600 font-medium">Project Mentor</p>
+                 <div class="mt-4 flex justify-center space-x-4">
+                    <a href="https://www.linkedin.com/in/semihutku-05ab2318/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-emerald-600 transition-colors" aria-label="Prof. Dr. Semih Utku LinkedIn">
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://avesis.deu.edu.tr/semih.utku" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-emerald-600 transition-colors" aria-label="Prof. Dr. Semih Utku Website">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </a>
+                    </div>
             </div>
         </div>
     </section>
@@ -256,26 +305,51 @@
                 Access the detailed project report and poster.
             </p>
             <div class="flex flex-col md:flex-row justify-center items-center gap-6 sm:gap-8">
-                <a href="#" onclick="alert('Please replace # with the actual link to your report PDF.')" class="w-full md:w-auto flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3.5 px-8 sm:py-4 sm:px-10 rounded-lg text-lg transition-colors shadow-lg hover:shadow-xl">
+                <a href="#" onclick="alert('Coming Soon')" class="w-full md:w-auto flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3.5 px-8 sm:py-4 sm:px-10 rounded-lg text-lg transition-colors shadow-lg hover:shadow-xl">
                     <i data-lucide="file-text" class="mr-3 w-5 h-5 sm:w-6 sm:h-6"></i>
                     View Full Report
                 </a>
-                <a href="#" onclick="alert('Please replace # with the actual link to your poster PDF.')" class="w-full md:w-auto flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 px-8 sm:py-4 sm:px-10 rounded-lg text-lg transition-colors shadow-lg hover:shadow-xl">
+                <a href="#" onclick="alert('Coming Soon')" class="w-full md:w-auto flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 px-8 sm:py-4 sm:px-10 rounded-lg text-lg transition-colors shadow-lg hover:shadow-xl">
                     <i data-lucide="image" class="mr-3 w-5 h-5 sm:w-6 sm:h-6"></i>
                     View Project Poster
                 </a>
             </div>
-             <p class="text-center mt-14 sm:mt-16 text-gray-600 text-sm">Note: You will need to host these PDF files and update the links in the code.</p>
         </div>
     </section>
 
     <footer class="bg-gray-900 text-gray-400 py-12 sm:py-16">
         <div class="container mx-auto px-4 sm:px-6 text-center text-sm">
-            <p>&copy; 2025 Modernized Airline Management System Project.</p>
+            <p>&copy; 2025 AMS Project</p>
             <p>Dokuz Eylul University, Department of Computer Engineering.</p>
-            <p class="mt-3 text-xs text-gray-500">Designed to be modern, minimalist, and responsive.</p>
+            <p class="mt-3 text-xs text-gray-500">Berkay Dinç, Yusuf Gassaloğlu, Güney Söğüt</p>
         </div>
     </footer>
+
+    <div 
+        id="imageModal" 
+        x-show="showImageModal" 
+        @click.away="showImageModal = false" 
+        @keydown.escape.window="showImageModal = false"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-[100]"
+        x-cloak
+    >
+        <div class="bg-white p-3 sm:p-4 rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] relative">
+            <img :src="modalImgSrc" alt="Enlarged project visual" class="max-w-full max-h-[85vh] h-auto w-auto block mx-auto rounded">
+            <button 
+                @click="showImageModal = false" 
+                class="absolute -top-3 -right-3 sm:top-2 sm:right-2 text-gray-300 hover:text-white bg-gray-800 hover:bg-gray-900 rounded-full p-1.5 shadow-lg"
+                aria-label="Close image modal"
+            >
+                <i data-lucide="x" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+            </button>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="static/scripts/script.js" defer></script>
