@@ -39,7 +39,23 @@ This showcase website itself is built using the following web technologies:
 
 The website files are organized as follows:
 
-airline-website/│├── index.html              # The main HTML file for the website│└── static/├── images/             # Directory for storing image assets (e.g., home-hero.png, team photos, gallery images)│   ├── home-hero.png│   ├── home.png│   ├── admin-dashboard.png│   └── ... (other project visuals)│├── styles/│   └── style.css       # External CSS file for custom styles│├── scripts/│   └── script.js       # External JavaScript file for custom interactivity│└── videos/             # Directory for storing video assets (e.g., hero background video)└── your-hero-video.mp4 (example)
+```text
+airline-website/
+├─ index.html              # The main HTML file for the website
+└─ static/
+   ├─ images/             # Directory for storing image assets
+   │  ├─ home-hero.png   # (e.g., hero background, team photos, gallery images)
+   │  ├─ home.png
+   │  ├─ admin-dashboard.png
+   │  └─ ... (other project visuals)
+   ├─ styles/
+   │  └─ style.css       # External CSS file for custom styles
+   ├─ scripts/
+   │  └─ script.js       # External JavaScript file for custom interactivity
+   └─ videos/             # Directory for storing video assets
+      └─ home-hero-video.mp4 (example for hero background video)
+```
+
 ## 5. How to View the Website
 
 1.  Ensure all files and folders are structured as described above.
