@@ -50,8 +50,26 @@
         </div>
     </header>
 
-    <section id="home" class="hero-bg min-h-screen flex items-center pt-20 sm:pt-16">
-        <div class="container mx-auto px-4 sm:px-6 text-center">
+    <section 
+        id="home" 
+        class="min-h-screen flex items-center pt-20 sm:pt-16 relative overflow-hidden"
+        x-data="{ videoPlaying: false }"
+        @mouseenter="if ($refs.heroVideo) { $refs.heroVideo.play(); videoPlaying = true; }"
+        @mouseleave="if ($refs.heroVideo) { $refs.heroVideo.pause(); videoPlaying = false; }"
+    >
+        <video 
+            x-ref="heroVideo"
+            loop 
+            muted 
+            playsinline 
+            poster="static/images/home-hero.png" 
+            class="absolute inset-0 w-full h-full object-cover z-0"
+        >
+            <source src="static/videos/home-hero-video.mp4" type="video/mp4">
+
+        </video>
+        
+        <div class="container mx-auto px-4 sm:px-6 text-center relative z-10"> 
             <div class="bg-black/50 backdrop-blur-md py-12 sm:py-16 md:py-20 px-4 sm:px-8 rounded-xl max-w-4xl mx-auto">
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-4 sm:mb-6">
                     Modernized Airline Management System
