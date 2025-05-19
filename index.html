@@ -207,19 +207,60 @@
                 A glimpse into the Airline Management System.
             </p>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-                <a href="#" @click.prevent="modalImgSrc = 'static/images/home-hero.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300" aria-label="View Dashboard Visual">
+                <a href="#" @click.prevent="modalImgSrc = 'static/images/home.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Home Page Visual">
                     <div class="aspect-[4/3] overflow-hidden">
-                        <img src="static/images/home-hero.png" alt="Project Screenshot 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <img src="static/images/home.png" alt="Home Page Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <p class="text-white text-lg font-semibold px-4 text-center">Main Application View</p>
                     </div>
                 </a>
-                <a href="#" @click.prevent="modalImgSrc = 'https://placehold.co/1200x900/d0d0d0/888888?text=System+Demo+Enlarged'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300" aria-label="View System Demo Video">
+                <a href="#" @click.prevent="modalImgSrc = 'static/images/admin-dashboard.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Admin Dashboard">
                      <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://placehold.co/800x600/d0d0d0/888888?text=System+Demo+Video" alt="Project Video Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <img src="static/images/admin-dashboard.png" alt="Admin Dashboard Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <p class="text-white text-lg font-semibold px-4 text-center">Admin Dashboard Overview</p>
                     </div>
                 </a>
-                <a href="#" @click.prevent="modalImgSrc = 'https://placehold.co/1200x900/c0c0c0/777777?text=AI+Chatbot+Enlarged'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300" aria-label="View AI Chatbot UI">
+                <a href="#" @click.prevent="modalImgSrc = 'static/images/flight-listing.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Flight Listing">
                     <div class="aspect-[4/3] overflow-hidden">
-                        <img src="https://placehold.co/800x600/c0c0c0/777777?text=AI+Chatbot+UI" alt="Project Feature Showcase" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <img src="static/images/flight-listing.png" alt="Flight Listing Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <p class="text-white text-lg font-semibold px-4 text-center">Flight Listing Interface</p>
+                    </div>
+                </a>
+                <a href="#" @click.prevent="modalImgSrc = 'static/images/admin-dashboard-2.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Detailed Admin View">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="static/images/admin-dashboard-2.png" alt="Detailed Admin View Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <p class="text-white text-lg font-semibold px-4 text-center">Admin Data Management</p>
+                    </div>
+                </a>
+                <a href="#" @click.prevent="modalImgSrc = 'static/images/flight-prices.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Flight Prices">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="static/images/flight-prices.png" alt="Flight Prices Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <p class="text-white text-lg font-semibold px-4 text-center">Flight Pricing Tiers</p>
+                    </div>
+                </a>
+                <a href="#" @click.prevent="modalImgSrc = 'static/images/seat-map.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Seat Map">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="static/images/seat-map.png" alt="Seat Map Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <p class="text-white text-lg font-semibold px-4 text-center">Interactive Seat Map</p>
+                    </div>
+                </a>
+                <a href="#" @click.prevent="modalImgSrc = 'static/images/ticket-purchase-screen.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Ticket Purchase Screen">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="static/images/ticket-purchase-screen.png" alt="Ticket Purchase Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <p class="text-white text-lg font-semibold px-4 text-center">Ticket Purchase Process</p>
                     </div>
                 </a>
             </div>
