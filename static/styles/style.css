@@ -1,33 +1,30 @@
-/* Base body styles */
 body {
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Hero background image */
 .hero-bg {
-    background-image: url('../images/home-hero.png'); /* Updated to use your local image */
+    background-image: url('../images/home-hero.png');
     background-size: cover;
     background-position: center;
 }
 
-/* Styling for Simple Icons images from CDN */
 .tech-logo-item img { 
     filter: grayscale(100%) brightness(40%) contrast(120%); 
     transition: filter 0.3s ease-in-out, opacity 0.3s ease-in-out;
     opacity: 0.75;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ensures the image is contained within the dimensions */
+    object-fit: contain; 
 }
 
 .tech-logo-item img:hover {
-    filter: grayscale(100%) brightness(25%) contrast(130%); /* Darker monochrome on hover */
+    filter: grayscale(100%) brightness(25%) contrast(130%); 
     opacity: 1;
 }
 
-/* Custom scrollbar (optional) */
+
 ::-webkit-scrollbar { 
     width: 8px; 
 }
@@ -41,6 +38,3 @@ body {
 ::-webkit-scrollbar-thumb:hover { 
     background: #555; 
 }
-
-/* Styles for Alpine.js x-cloak if not handled by Tailwind directly */
-/* [x-cloak] { display: none !important; } */ /* Tailwind handles this if Alpine is loaded after Tailwind */

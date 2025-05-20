@@ -5,20 +5,7 @@ function initializeLucideIconsWithRetry(maxRetries = 10, retryInterval = 200) {
     function attemptInitialization() {
         if (window.lucide && typeof window.lucide.createIcons === 'function') {
             try {
-                console.log("Lucide object found. Attempting to create Lucide icons...");
                 window.lucide.createIcons();
-                console.log("Lucide icons should have been created.");
-
-                // Optional: Verify if icons were actually rendered
-                // const firstIcon = document.querySelector('[data-lucide]');
-                // if (firstIcon && firstIcon.innerHTML.includes('<svg')) {
-                //     console.log("First Lucide icon appears to be rendered.");
-                // } else if (firstIcon) {
-                //     console.warn("First Lucide icon tag found, but no SVG content. Check attributes and script execution.");
-                // } else {
-                //     // This might be normal if there are no icons on the page yet, or if they are added dynamically later
-                //     // console.warn("No elements with data-lucide attribute found by the script at this point.");
-                // }
 
             } catch (error) {
                 console.error("Error creating Lucide icons:", error);
@@ -34,17 +21,12 @@ function initializeLucideIconsWithRetry(maxRetries = 10, retryInterval = 200) {
         }
     }
 
-    attemptInitialization(); // Start the first attempt
-}
+    attemptInitialization(); 
 
-// Wait for the DOM to be fully loaded before running other scripts
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOM fully loaded and parsed.");
     
-    // Attempt to initialize Lucide icons (it will retry if Lucide is not ready)
     initializeLucideIconsWithRetry(); 
 
-    // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -68,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Active link highlighting based on scroll position
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('header nav a:not([target="_blank"])');
     const mobileNavLinks = document.querySelectorAll('div.md\\:hidden a[href^="#"]:not([target="_blank"])');
@@ -108,17 +89,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', updateActiveLink, { passive: true }); 
     window.addEventListener('load', () => {
-        console.log("Window fully loaded (all resources).");
-        updateActiveLink(); // Update active link on load
-        // One final attempt to initialize Lucide, in case it loaded very late.
-        // The initializeLucideIconsWithRetry called in DOMContentLoaded should ideally handle it.
-        // This is an extra safeguard.
-        if (!window.lucide || !window.lucide.createIcons) { // Only if not already clearly available
-             initializeLucideIconsWithRetry(5, 100); // Fewer retries here
+        updateActiveLink(); 
+        if (!window.lucide || !window.lucide.createIcons) { 
+             initializeLucideIconsWithRetry(5, 100); 
         } else if (document.querySelector('[data-lucide]:not(:has(svg))')) {
-            // If lucide is available but some icons were missed (e.g. dynamic content)
-            console.log("Lucide available, attempting to re-create icons for any missed elements on window.load");
-            initializeLucideIconsWithRetry(1,0); // Attempt once more immediately
+            initializeLucideIconsWithRetry(1,0); 
         }
     }); 
     window.addEventListener('resize', updateActiveLink);

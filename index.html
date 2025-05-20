@@ -10,9 +10,28 @@
     <link rel="stylesheet" href="static/styles/style.css">
     <style>
         [x-cloak] { display: none !important; }
+        /* Hide the default video controls */
+        video::-webkit-media-controls { display:none !important; }
+        video::-moz-media-controls { display:none !important; }
+        video::-ms-media-controls { display:none !important; }
+        video::media-controls { display:none !important; }
     </style>
 </head>
-<body class="bg-slate-50 text-gray-700" x-data="{ showImageModal: false, modalImgSrc: '' }">
+<body class="bg-slate-50 text-gray-700" 
+      x-data="{ 
+          showImageModal: false, 
+          currentIndex: 0, 
+          images: [
+              'static/images/home.png', 
+              'static/images/admin-dashboard.png', 
+              'static/images/flight-listing.png', 
+              'static/images/admin-dashboard-2.png', 
+              'static/images/flight-prices.png', 
+              'static/images/seat-map.png', 
+              'static/images/ticket-purchase-screen.png',
+              'static/images/system_design_final.png' 
+          ] 
+      }">
 
     <header x-data="{ mobileMenuOpen: false }" class="bg-white/95 backdrop-blur-lg shadow-sm fixed w-full z-50">
         <div class="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
@@ -23,6 +42,7 @@
                     <a href="#about" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">About</a>
                     <a href="#features" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Features</a>
                     <a href="#tech-stack" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Tech Stack</a>
+                    <a href="#system-architecture" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Architecture</a> 
                     <a href="#gallery" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Gallery</a>
                     <a href="#team" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Team</a>
                     <a href="#documents" class="text-gray-700 hover:text-indigo-600 transition-colors text-sm font-medium">Documents</a>
@@ -42,6 +62,7 @@
                 <a href="#about" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">About</a>
                 <a href="#features" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Features</a>
                 <a href="#tech-stack" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Tech Stack</a>
+                <a href="#system-architecture" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Architecture</a> 
                 <a href="#gallery" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Gallery</a>
                 <a href="#team" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Team</a>
                 <a href="#documents" @click="mobileMenuOpen = false" class="block py-2.5 px-3 text-base text-gray-700 hover:bg-indigo-50 rounded-md font-medium">Documents</a>
@@ -52,24 +73,30 @@
 
     <section 
         id="home" 
-        class="min-h-screen flex items-center pt-20 sm:pt-16 relative overflow-hidden"
-        x-data="{ videoPlaying: false }"
-        @mouseenter="if ($refs.heroVideo) { $refs.heroVideo.play(); videoPlaying = true; }"
-        @mouseleave="if ($refs.heroVideo) { $refs.heroVideo.pause(); videoPlaying = false; }"
+        class="min-h-screen flex items-center pt-20 sm:pt-16 relative overflow-hidden" 
     >
         <video 
-            x-ref="heroVideo"
-            autoplay
+            id="heroVideo"
             loop 
             muted 
             playsinline 
             poster="static/images/home-hero.png" 
-            class="absolute inset-0 w-full h-full object-cover z-0"
+            class="absolute inset-0 w-full h-full object-cover z-0 cursor-pointer"
         >
             <source src="static/videos/home-hero-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
+
+        <button 
+            id="heroPlayButton"
+            class="absolute inset-0 w-full h-full flex items-center justify-center z-20 bg-black bg-opacity-30 text-white transition-opacity duration-300 cursor-pointer"
+            aria-label="Play/Pause Video"
+            style="display: none;" >
+            <i id="heroPlayIcon" data-lucide="play-circle" class="w-20 h-20 sm:w-24 sm:h-24"></i>
+            <i id="heroPauseIcon" data-lucide="pause-circle" class="w-20 h-20 sm:w-24 sm:h-24" style="display: none;"></i>
+        </button>
         
-        <div class="container mx-auto px-4 sm:px-6 text-center relative z-10"> 
+        <div class="container mx-auto px-4 sm:px-6 text-center relative z-10 pointer-events-none"> 
             <div class="bg-black/50 backdrop-blur-md py-12 sm:py-16 md:py-20 px-4 sm:px-8 rounded-xl max-w-4xl mx-auto">
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-4 sm:mb-6">
                     Modernized Airline Management System
@@ -77,7 +104,7 @@
                 <p class="text-xl sm:text-2xl lg:text-3xl text-indigo-100 mb-8 sm:mb-10">
                     Enhanced With AI-Driven Solutions
                 </p>
-                <div class="flex flex-col items-center space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+                <div class="flex flex-col items-center space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 pointer-events-auto">
                     <a href="#about" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors shadow-md hover:shadow-lg">
                         Learn More
                     </a>
@@ -218,82 +245,95 @@
         </div>
     </section>
 
-    <section id="gallery" class="py-24 md:py-32 bg-slate-100">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 mb-8 sm:mb-12 text-center">Project Visuals</h2>
-            <p class="text-lg sm:text-xl text-gray-500 mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto">
-                A glimpse into the Airline Management System.
-            </p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-                <a href="#" @click.prevent="modalImgSrc = 'static/images/home.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Home Page Visual">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="static/images/home.png" alt="Home Page Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <p class="text-white text-lg font-semibold px-4 text-center">Main Application View</p>
-                    </div>
-                </a>
-                <a href="#" @click.prevent="modalImgSrc = 'static/images/admin-dashboard.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Admin Dashboard">
-                     <div class="aspect-[4/3] overflow-hidden">
-                        <img src="static/images/admin-dashboard.png" alt="Admin Dashboard Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <p class="text-white text-lg font-semibold px-4 text-center">Admin Dashboard Overview</p>
-                    </div>
-                </a>
-                <a href="#" @click.prevent="modalImgSrc = 'static/images/flight-listing.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Flight Listing">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="static/images/flight-listing.png" alt="Flight Listing Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <p class="text-white text-lg font-semibold px-4 text-center">Flight Listing Interface</p>
-                    </div>
-                </a>
-                <a href="#" @click.prevent="modalImgSrc = 'static/images/admin-dashboard-2.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Detailed Admin View">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="static/images/admin-dashboard-2.png" alt="Detailed Admin View Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <p class="text-white text-lg font-semibold px-4 text-center">Admin Data Management</p>
-                    </div>
-                </a>
-                <a href="#" @click.prevent="modalImgSrc = 'static/images/flight-prices.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Flight Prices">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="static/images/flight-prices.png" alt="Flight Prices Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <p class="text-white text-lg font-semibold px-4 text-center">Flight Pricing Tiers</p>
-                    </div>
-                </a>
-                <a href="#" @click.prevent="modalImgSrc = 'static/images/seat-map.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Seat Map">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="static/images/seat-map.png" alt="Seat Map Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <p class="text-white text-lg font-semibold px-4 text-center">Interactive Seat Map</p>
-                    </div>
-                </a>
-                <a href="#" @click.prevent="modalImgSrc = 'static/images/ticket-purchase-screen.png'; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Ticket Purchase Screen">
-                    <div class="aspect-[4/3] overflow-hidden">
-                        <img src="static/images/ticket-purchase-screen.png" alt="Ticket Purchase Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <p class="text-white text-lg font-semibold px-4 text-center">Ticket Purchase Process</p>
-                    </div>
-                </a>
-            </div>
+    <section id="system-architecture" class="py-24 md:py-32 bg-slate-100">
+    <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 mb-8 sm:mb-12 text-center">System Architecture</h2>
+        <p class="text-lg sm:text-xl text-gray-500 mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto">
+            An overview of our system's design and components.
+        </p>
+        <div 
+            class="bg-white p-4 sm:p-6 md:p-8 rounded-xl shadow-xl max-w-5xl mx-auto cursor-pointer"
+            @click.prevent="currentIndex = 7; showImageModal = true" aria-label="View System Architecture Diagram"
+        >
+            <img src="static/images/system_design_final.png" alt="System Architecture Diagram" class="w-full h-auto rounded-md">
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="team" class="py-24 md:py-32 bg-white">
-        <div class="container mx-auto px-4 sm:px-6">
+    <section id="gallery" class="py-24 md:py-32 bg-white"> 
+    <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 mb-8 sm:mb-12 text-center">Project Visuals</h2>
+        <p class="text-lg sm:text-xl text-gray-500 mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto">
+            A glimpse into the Airline Management System.
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+            <a href="#" @click.prevent="currentIndex = 0; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Home Page Visual">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="static/images/home.png" alt="Home Page Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <p class="text-white text-lg font-semibold px-4 text-center">Main Application View</p>
+                </div>
+            </a>
+            <a href="#" @click.prevent="currentIndex = 1; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Admin Dashboard">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="static/images/admin-dashboard.png" alt="Admin Dashboard Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <p class="text-white text-lg font-semibold px-4 text-center">Admin Dashboard Overview</p>
+                </div>
+            </a>
+            <a href="#" @click.prevent="currentIndex = 2; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Flight Listing">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="static/images/flight-listing.png" alt="Flight Listing Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <p class="text-white text-lg font-semibold px-4 text-center">Flight Listing Interface</p>
+                </div>
+            </a>
+            <a href="#" @click.prevent="currentIndex = 3; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Detailed Admin View">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="static/images/admin-dashboard-2.png" alt="Detailed Admin View Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <p class="text-white text-lg font-semibold px-4 text-center">Admin Data Management</p>
+                </div>
+            </a>
+            <a href="#" @click.prevent="currentIndex = 4; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Flight Prices">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="static/images/flight-prices.png" alt="Flight Prices Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <p class="text-white text-lg font-semibold px-4 text-center">Flight Pricing Tiers</p>
+                </div>
+            </a>
+            <a href="#" @click.prevent="currentIndex = 5; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Seat Map">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="static/images/seat-map.png" alt="Seat Map Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <p class="text-white text-lg font-semibold px-4 text-center">Interactive Seat Map</p>
+                </div>
+            </a>
+            <a href="#" @click.prevent="currentIndex = 6; showImageModal = true" class="block bg-white rounded-xl shadow-xl overflow-hidden group hover:shadow-2xl transition-shadow duration-300 relative" aria-label="View Ticket Purchase Screen">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="static/images/ticket-purchase-screen.png" alt="Ticket Purchase Screenshot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <p class="text-white text-lg font-semibold px-4 text-center">Ticket Purchase Process</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+    <section id="team" class="py-24 md:py-32 bg-slate-100"> <div class="container mx-auto px-4 sm:px-6">
             <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 mb-8 sm:mb-12 text-center">Meet the Team</h2>
             <p class="text-lg sm:text-xl text-gray-500 mb-12 sm:mb-16 md:mb-20 text-center max-w-3xl mx-auto">
                 The talented individuals behind this project.
             </p>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 max-w-5xl mx-auto">
-                <div class="text-center p-8 bg-slate-50 rounded-xl shadow-xl">
-                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQFZj6LzSsY56Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1710423535799?e=1753315200&v=beta&t=i-eGb00dsfMiyhOZuS8o0TDUju6AoVejiy9mGDZddoQ" alt="Berkay Dinç" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-md">
+                <div class="text-center p-8 bg-white rounded-xl shadow-xl"> <img src="https://media.licdn.com/dms/image/v2/D4D03AQFZj6LzSsY56Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1710423535799?e=1753315200&v=beta&t=i-eGb00dsfMiyhOZuS8o0TDUju6AoVejiy9mGDZddoQ" alt="Berkay Dinç" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-md">
                     <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Berkay Dinç</h3>
                     <p class="text-indigo-600 font-medium">Project Developer</p>
                     <div class="mt-4 flex justify-center space-x-4">
@@ -308,7 +348,7 @@
                     </a>
                     </div>
                 </div>
-                <div class="text-center p-8 bg-slate-50 rounded-xl shadow-xl">
+                <div class="text-center p-8 bg-white rounded-xl shadow-xl">
                     <img src="https://media.licdn.com/dms/image/v2/D4D03AQHS3r1z9bP16g/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1712694495207?e=1753315200&v=beta&t=blb1rxQ3-sruHSWQnHDAWUCPECic1OjbQI85gmXUebM" alt="Yusuf Gassaloğlu" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-md">
                     <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Yusuf Gassaloğlu</h3>
                     <p class="text-indigo-600 font-medium">Project Developer</p>
@@ -324,7 +364,7 @@
                     </a>
                     </div>
                 </div>
-                <div class="text-center p-8 bg-slate-50 rounded-xl shadow-xl">
+                <div class="text-center p-8 bg-white rounded-xl shadow-xl">
                     <img src="https://media.licdn.com/dms/image/v2/C4D03AQHlmEjTpyPXxA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1661286053598?e=1753315200&v=beta&t=ydbJ6yJYJNp32O-E-Jz9lWj1vNfcLPfXlZLYkWIX-qc" alt="Güney Söğüt" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-indigo-200 shadow-md">
                     <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Güney Söğüt</h3>
                     <p class="text-indigo-600 font-medium">Project Developer</p>
@@ -341,7 +381,7 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-16 sm:mt-20 p-8 bg-slate-50 rounded-xl shadow-xl max-w-sm mx-auto">
+            <div class="text-center mt-16 sm:mt-20 p-8 bg-white rounded-xl shadow-xl max-w-sm mx-auto">
                 <img src="https://avesis.deu.edu.tr/user/image/102941" alt="Prof. Dr. Semih Utku" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto mb-6 border-4 border-emerald-200 shadow-md">
                 <h3 class="text-xl sm:text-2xl font-semibold text-gray-900">Prof. Dr. Semih Utku</h3>
                 <p class="text-emerald-600 font-medium">Project Mentor</p>
@@ -391,21 +431,44 @@
         @keydown.escape.window="showImageModal = false"
         x-transition:enter="transition ease-out duration-300"
         x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
+        x-transition:enter-end="opacity-100"    
         x-transition:leave="transition ease-in duration-200"
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
         class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-[100]"
         x-cloak
     >
-        <div class="bg-white p-3 sm:p-4 rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] relative">
-            <img :src="modalImgSrc" alt="Enlarged project visual" class="max-w-full max-h-[85vh] h-auto w-auto block mx-auto rounded">
+        <div class="bg-white p-3 sm:p-4 rounded-lg shadow-xl relative max-w-full w-auto overflow-auto">
             <button 
                 @click="showImageModal = false" 
-                class="absolute -top-3 -right-3 sm:top-2 sm:right-2 text-gray-300 hover:text-white bg-gray-800 hover:bg-gray-900 rounded-full p-1.5 shadow-lg"
+                class="absolute -top-3 -right-3 sm:top-2 sm:right-2 text-gray-300 hover:text-white bg-gray-800 hover:bg-gray-900 rounded-full p-1.5 shadow-lg z-10"
                 aria-label="Close image modal"
             >
                 <i data-lucide="x" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+            </button>
+
+            <div class="flex justify-center items-center overflow-auto" style="max-height:85vh; max-width:90vw;">
+                <img 
+                    :src="images[currentIndex]" 
+                    alt="Enlarged project visual" 
+                    class="block mx-auto rounded shadow-lg"
+                    style="max-width:90vw; max-height:80vh; width:auto; height:auto; display:block;"
+                >
+            </div>
+
+            <button 
+                @click="currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1" 
+                class="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-gray-800/60 text-white rounded-full p-2 shadow-lg hover:bg-gray-900/80 transition-colors"
+                aria-label="Previous image"
+            >
+                <i data-lucide="chevron-left" class="w-6 h-6"></i>
+            </button>
+            <button 
+                @click="currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0" 
+                class="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-gray-800/60 text-white rounded-full p-2 shadow-lg hover:bg-gray-900/80 transition-colors"
+                aria-label="Next image"
+            >
+                <i data-lucide="chevron-right" class="w-6 h-6"></i>
             </button>
         </div>
     </div>
